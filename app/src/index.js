@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import registerServiceWorker from './registerServiceWorker';
+import './css/app.css'
 
-ReactDOM.render(<div> FireFly</div>, document.getElementById('root'));
+import Layout from './layout'
+
+ReactDOM.render(<Layout />, document.getElementById('root'));
 registerServiceWorker();

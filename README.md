@@ -27,7 +27,7 @@ npm install
 cd FileFly/app 
 
 ```
-
+npm install 
 ```
 npm start
 ```
