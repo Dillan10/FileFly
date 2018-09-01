@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import _ from 'lodash'
 import classNames from 'classnames'
-// import {upload} from '../helpers/upload'
+import {upload} from '../helpers/upload'
 import PropTypes from 'prop-types'
 
 class HomeForm extends Component {
@@ -180,9 +180,10 @@ class HomeForm extends Component {
 
             if (isValid) {
                 // the form is valid and ready to submit.
-
                 const data = this.state.form;
-                console.log("submitted")
+                upload(data,(event)=>{
+                    console.log("Tracking event",event);
+                })
 
             }
         });

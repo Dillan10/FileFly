@@ -4,7 +4,7 @@ import _ from 'lodash'
 import File from '../models/file'
 import {ObjectID} from 'mongodb'
 // import File from './models/file'
-// import Post from './models/post'
+import Post from '../models/post'
 // import {ObjectID} from 'mongodb'
 // import FileArchiver from './archiver'
 // import Email from './email'
@@ -46,21 +46,40 @@ class AppRouter {
                   const newFile = new File(app).initWithObject(fileObj).toJSON();
                   fileModel.push(newFile);
             });
-
+            //iF THERE ARE FILES TO UPLOAD
             if (fileModel.length) {
+                //save the files to the db
                 db.collection('files').insertMany(fileModel, (err, result) => {
                     if (err) {
                         res.status(503).json({
                             error: {message: 'unable to save file'}
                         })
-                    } else {
-                        console.log("save file with result", err, result);
-                        return res.json({
-                            files: fileModel
-                        });
                     }
-                })
-            } else {
+                    console.log("saved file to db", err, result);
+                    let post = new Post(app).initWithObject({
+                        from: _.get(req, 'body.from'),
+                        to: _.get(req, 'body.to'),
+                        message: _.get(req, 'body.message'),
+                        files: result.insertedIds,
+                    }).toJson();
+                    //save the post in the posts collection
+                    db.collection('posts').insertOne(post, (err, result) => {
+                        if (err) {
+                            return res.status(503).json({error: {message: "Your upload could not be saved."}});
+                        }
+                        //implement email sending to user with download link.
+                        // send email
+                        // const sendEmail = new Email(app).sendDownloadLink(post, (err, info) => {
+                        //
+                        //
+                        // });
+                        // callback to react app with post detail.
+                        return res.json(post);
+                    });
+                });
+            }
+            //Nothing was selcted
+            else {
                 res.status(503).json({
                     error: {message: `Files Upload is required`}
                 })
