@@ -9,6 +9,7 @@ export const connect = (callback) => {
     MongoClient.connect(url, (err, db) =>
     {
         return callback(err, db);
+
     });
 };
 

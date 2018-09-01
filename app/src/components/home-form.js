@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import _ from 'lodash'
 import classNames from 'classnames'
-// import {upload} from '../helpers/upload'
-import PropTypes from 'prop-types'
 
 class HomeForm extends Component {
 
@@ -53,7 +51,7 @@ class HomeForm extends Component {
     }
 
     _onFileAdded(event) {
-        /*load ash allows us to use the _get func,
+        /*lod ash allows us to use the _get func,
         sames as files = this.state.form.files
         */
         let files = _.get(this.state, 'form.files', []);
@@ -127,7 +125,7 @@ class HomeForm extends Component {
                     }
                 }
             ]
-        }
+        };
 
         _.each(fields, (field) => {
 
@@ -289,11 +287,5 @@ class HomeForm extends Component {
     }
 }
 
-
-// HomeForm.propTypes = {
-//     onUploadBegin: PropTypes.func,
-//     onUploadEvent: PropTypes.func
-//
-// };
 
 export default HomeForm;

@@ -3,14 +3,7 @@ import {version} from '../package.json'
 import _ from 'lodash'
 import File from '../models/file'
 import {ObjectID} from 'mongodb'
-// import File from './models/file'
-// import Post from './models/post'
-// import {ObjectID} from 'mongodb'
-// import FileArchiver from './archiver'
-// import Email from './email'
-// import S3 from './s3'
-// import User from './models/user'
-// import Auth from './models/auth'
+
 
 class AppRouter {
 
@@ -101,7 +94,7 @@ class AppRouter {
         // Create new users post
 
 
-        // Login user 
+        // Login user
 
 
         // get my profile detail
