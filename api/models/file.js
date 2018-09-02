@@ -1,3 +1,4 @@
+// File Model
 import _ from 'lodash'
 
 class File {
@@ -31,7 +32,7 @@ class File {
 
     save(callback){
         const  db  = this.app.get('db');
-        db.collection('files').insertOne(this.model,(err,result)=>{
+        db.collection('files').insertOne(this.model, (err, result) => {
             return callback(err,result);
         });
     }

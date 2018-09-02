@@ -1,7 +1,7 @@
 {
   "name": "es6-expressjs",
   "version": "1.0.0",
-  "description": "ES6 Nodejs express 4 starter",
+  "description": "FIle Sharing App",
   "main": "dist",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets env,stage-0\"",
@@ -24,7 +24,7 @@
       "no-unused-vars": 1
     }
   },
-  "author": "toan@tabvn.com",
+  "author": "johnpaulchukwu43",
   "license": "ISC",
   "dependencies": {
     "archiver": "^2.1.0",
