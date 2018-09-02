@@ -179,10 +179,15 @@ class HomeForm extends Component {
 
 
             if (isValid) {
-                // the form is valid and ready to submit.
+                //  if there are no errors in form validation
                 const data = this.state.form;
+                if (this.props.onUploadBegin){
+                    this.props.onUploadBegin(data);
+                }
                 upload(data,(event)=>{
-                    console.log("Tracking event",event);
+                    if (this.props.onUploadEvent){
+                        this.props.onUploadEvent(event);
+                    }
                 })
 
             }
@@ -291,10 +296,10 @@ class HomeForm extends Component {
 }
 
 
-// HomeForm.propTypes = {
-//     onUploadBegin: PropTypes.func,
-//     onUploadEvent: PropTypes.func
-//
-// };
+HomeForm.propTypes = {
+    onUploadBegin: PropTypes.func,
+    onUploadEvent: PropTypes.func
+
+};
 
 export default HomeForm;
