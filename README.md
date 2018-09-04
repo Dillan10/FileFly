@@ -32,3 +32,5 @@ npm install
 npm start
 ```
 
+Videos tutorial used: https://www.youtube.com/playlist?list=PLFaW_8zE4amOp3pOVCrGO-Ox--q4WShsQ
+
