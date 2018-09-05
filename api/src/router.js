@@ -6,7 +6,11 @@ import {ObjectID} from 'mongodb'
 // import File from './models/file'
 import Post from '../models/post'
 // import {ObjectID} from 'mongodb'
+<<<<<<< HEAD
 // import FileArchiver from './archiver'
+=======
+import FileArchiver from './archiver'
+>>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
 // import Email from './email'
 // import S3 from './s3'
 // import User from './models/user'
@@ -99,7 +103,11 @@ class AppRouter {
                         return res.status(404).json({error:'not found'});
                     }
                     const filePath = path.join(uploadDir,fileName);
+<<<<<<< HEAD
                     return res.download(filePath,fileName,(err)=>{
+=======
+                    return res.download(filePath,_.get(result,'[0].originalName'),(err)=>{
+>>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
                         if(err){
                             return res.status(404).json({error:'not found'});
                         }else{
@@ -112,22 +120,126 @@ class AppRouter {
 
 
         // routing for post detail /api/posts/:id
+<<<<<<< HEAD
 
 
         // Routing download zip files.
 
+=======
+        app.get('/api/posts/:id',(req,res,next) =>{
+            const postId = _.get(req,'params.id');
+
+            let postIdObj = null;
+            try{
+                postIdObj = new ObjectID(postId);
+            }catch(err){
+                return res.status(404).json({error:'File Not Found'})
+            }
+            db.collection('posts').find({_id:postIdObj}).limit(1).toArray((err,results)=>{
+                let result = _.get(results,'[0]');
+                if(err || !result){
+                    return res.status(404).json({error:'File Not Found'})
+                }
+
+                const fileIDs = _.get(result,'files',[]);
+                db.collection('files').find({_id:{$in: fileIDs}}).toArray((err,fileRes) =>{
+                    if(err || !fileRes || !fileRes.length){
+                        return res.status(404).json({error:'File Not Found Err'})
+                    }
+                    result.files = fileRes;
+                    return res.json(result);
+                });
+
+            })
+        })
+
+        // Routing download zip files.
+        app.get('/api/posts/:id/download', (req, res, next) => {
+
+            const id = _.get(req, 'params.id', null);
+
+
+            this.getPostById(id, (err, result) => {
+
+                if (err) {
+                    return res.status(404).json({error: {message: 'File not found.'}});
+                }
+
+                const files = _.get(result, 'files', []);
+                const archiver = new FileArchiver(app, files, res).download();
+                return archiver;
+
+            })
+        });
+>>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
 
         // Create new users post
 
 
+<<<<<<< HEAD
         // Login user 
+=======
+        // Login user
+>>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
 
 
         // get my profile detail
 
 
     }
+<<<<<<< HEAD
 }
 
 
 export default AppRouter;
+=======
+
+    getPostById(id, callback = () => {
+    }) {
+
+
+        const app = this.app;
+
+        const db = app.get('db');
+
+
+        let postObjectId = null;
+        try {
+            postObjectId = new ObjectID(id);
+        }
+        catch (err) {
+
+            return callback(err, null);
+
+        }
+
+        db.collection('posts').find({_id: postObjectId}).limit(1).toArray((err, results) => {
+            let result = _.get(results, '[0]');
+
+            if (err || !result) {
+                return callback(err ? err : new Error("File not found."));
+            }
+
+            const fileIds = _.get(result, 'files', []);
+
+            db.collection('files').find({_id: {$in: fileIds}}).toArray((err, files) => {
+
+                if (err || !files || !files.length) {
+                    return callback(err ? err : new Error("File not found."));
+                }
+
+                result.files = files;
+
+
+                return callback(null, result);
+
+            });
+
+
+        })
+    }
+}
+
+
+export default AppRouter;
+>>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
