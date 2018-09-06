@@ -40,7 +40,7 @@ class View extends Component {
 
                         history.push('/')
 
-                    }}><i className={'icon-paper-plane'}/> SHARE</h1>
+                    }}><i className={'icon-paper-plane'}/> File Fly</h1>
                 </div>
                 <div className={'app-card app-card-download'}>
 

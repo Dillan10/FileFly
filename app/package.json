@@ -5,10 +5,7 @@
   "dependencies": {
     "axios": "^0.17.0",
     "classnames": "^2.2.6",
-<<<<<<< HEAD
-=======
     "history": "^4.7.2",
->>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^16.4.2",

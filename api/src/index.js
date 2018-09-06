@@ -8,8 +8,16 @@ import path from 'path';
 
 import {connect} from "./database";
 import AppRouter from './router'
+import nodemailer from "nodemailer";
+import {smtp} from "./config";
 
 
+// Email Config
+
+let email = nodemailer.createTransport(smtp);
+
+
+// Storage Config
 const storageDir = path.join(__dirname, '..', 'storage');
 const storageConfig = multer.diskStorage({
     destination: (req,file,cb)=>{
@@ -47,7 +55,7 @@ app.use(bodyParser.json({
 app.set('root', __dirname);
 app.set('storageDir', storageDir);
 app.upload = upload;
-
+app.email = email;
 
 //Connect to the database.
 

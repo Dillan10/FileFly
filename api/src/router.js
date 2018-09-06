@@ -6,11 +6,8 @@ import {ObjectID} from 'mongodb'
 // import File from './models/file'
 import Post from '../models/post'
 // import {ObjectID} from 'mongodb'
-<<<<<<< HEAD
-// import FileArchiver from './archiver'
-=======
 import FileArchiver from './archiver'
->>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
+import Email from "./email";
 // import Email from './email'
 // import S3 from './s3'
 // import User from './models/user'
@@ -47,8 +44,8 @@ class AppRouter {
             let fileModel = [];
 
             _.each(files,(fileObj)=>{
-                  const newFile = new File(app).initWithObject(fileObj).toJSON();
-                  fileModel.push(newFile);
+                const newFile = new File(app).initWithObject(fileObj).toJSON();
+                fileModel.push(newFile);
             });
             //iF THERE ARE FILES TO UPLOAD
             if (fileModel.length) {
@@ -73,10 +70,11 @@ class AppRouter {
                         }
                         //implement email sending to user with download link.
                         // send email
-                        // const sendEmail = new Email(app).sendDownloadLink(post, (err, info) => {
-                        //
-                        //
-                        // });
+                        const sendEmail = new Email(app).sendDownloadLink(post, (err, info) => {
+                           if(err){
+                               console.log("An error sending mail",err)
+                           }
+                        });
                         // callback to react app with post detail.
                         return res.json(post);
                     });
@@ -103,11 +101,7 @@ class AppRouter {
                         return res.status(404).json({error:'not found'});
                     }
                     const filePath = path.join(uploadDir,fileName);
-<<<<<<< HEAD
-                    return res.download(filePath,fileName,(err)=>{
-=======
                     return res.download(filePath,_.get(result,'[0].originalName'),(err)=>{
->>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
                         if(err){
                             return res.status(404).json({error:'not found'});
                         }else{
@@ -120,12 +114,6 @@ class AppRouter {
 
 
         // routing for post detail /api/posts/:id
-<<<<<<< HEAD
-
-
-        // Routing download zip files.
-
-=======
         app.get('/api/posts/:id',(req,res,next) =>{
             const postId = _.get(req,'params.id');
 
@@ -171,28 +159,17 @@ class AppRouter {
 
             })
         });
->>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
 
         // Create new users post
 
 
-<<<<<<< HEAD
-        // Login user 
-=======
-        // Login user
->>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
+        // Login useapp.email = email;r
 
 
         // get my profile detail
 
 
     }
-<<<<<<< HEAD
-}
-
-
-export default AppRouter;
-=======
 
     getPostById(id, callback = () => {
     }) {
@@ -242,4 +219,3 @@ export default AppRouter;
 
 
 export default AppRouter;
->>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
