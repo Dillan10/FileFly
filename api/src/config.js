@@ -5,7 +5,7 @@ export const smtp = {
     secure: false, // true for 465, false for other ports
     auth: {
         user: 'apikey', // generated ethereal user
-        pass: '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'
+        pass: ''
     }
 };
 
