@@ -14,7 +14,6 @@
        "jsUrl": "/public/"
     },
     "production": {
-       "compileOnStartup": true,
        "jsUrl": "/public/",
        "logLevel": "error",
        "minify": true
