@@ -1,4 +1,3 @@
-import archiver from 'src/archiver'
 import _ from 'lodash'
 import path from 'path'
 // import S3 from './s3'
