@@ -1,7 +1,7 @@
-api/node_modules/
-api/package-lock.json
-api/storage
-app/node_modules
-app/package-lock.json
+node_modules/
+package-lock.json
+storage
+node_modules
+package-lock.json
 .idea
 .idea/*

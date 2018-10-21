@@ -1,10 +1,10 @@
 import path from 'path'
 import {version} from '../package.json'
 import _ from 'lodash'
-import File from '../models/file'
+import File from './models/file'
 import {ObjectID} from 'mongodb'
 // import File from './models/file'
-import Post from '../models/post'
+import Post from './models/post'
 // import {ObjectID} from 'mongodb'
 import FileArchiver from './archiver'
 import Email from "./email";
