@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {getFileDownloads} from '../helpers/download'
 import _ from 'lodash'
-import {betterNumber} from "../helpers";
+import {betterNumber} from "../helpers/index";
 import {apiUrl} from "../config";
 import {history} from "../history";
 

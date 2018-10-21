@@ -1,0 +1,23 @@
+{
+
+  "jsPort": 3001,
+  "hot": true,
+  "minify": false,
+  "longTermCaching": true,
+  "logLevel": "debug",
+  "env": {
+    "development": {
+       "hot": false,
+       "longTermCaching": false
+    },
+    "beta": {
+       "jsUrl": "/public/"
+    },
+    "production": {
+       "compileOnStartup": true,
+       "jsUrl": "/public/",
+       "logLevel": "error",
+       "minify": true
+    }
+  },
+}

@@ -1,11 +1,4 @@
-api/node_modules/
-api/package-lock.json
-<<<<<<< HEAD
-api/storage/
-=======
-api/storage
->>>>>>> 00f8dac4066e9a8cf569914c132df6c330918499
-app/node_modules
-app/package-lock.json
+node_modules
+package-lock.json
 .idea
 .idea/*

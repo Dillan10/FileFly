@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import _ from 'lodash'
 import PropTypes from 'prop-types'
-import {betterNumber} from "../helpers";
+import {betterNumber} from "../helpers/index";
 
 
 class HomeUploading extends Component{
